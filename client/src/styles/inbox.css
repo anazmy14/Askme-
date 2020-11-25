@@ -1,0 +1,57 @@
+.inbox-box{
+    background-color: white;
+    margin: auto;
+    font-size: 1rem;
+    padding: 20px;
+    width: fit-content;
+    border-radius:2%;
+    max-width: 95%;
+    width: 450px;
+}
+
+.inbox-question-box {
+  width : 400px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: solid 1px darkgray;
+  margin-bottom: 13px ;
+  padding-bottom: 13px;
+  max-width: 100%;
+}
+
+.inbox-answer {
+    font-weight: 600;
+    font-size: 1rem;
+    color: chocolate ;
+    margin-left: 5px;
+}
+
+.inbox-delete{
+    font-weight: 600;
+    font-size: 1rem;
+    color: red ;
+    margin-left: 5px;    
+}
+
+.inbox-form{
+    margin-top: 10px;
+}
+
+.inbox-send{
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: chocolate;
+}
+
+.inbox-send:hover{
+    color: gray;
+}
+
+.disabled.inbox-send{
+    background-color: transparent !important;
+    color: gray;
+}
+
+
+

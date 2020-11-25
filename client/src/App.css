@@ -1,0 +1,51 @@
+body{
+  background-color: chocolate;
+  font-family: 'Roboto', sans-serif;
+}
+
+a{
+  color:grey ;
+  font-size: 16px;
+  font-weight: lighter;
+  margin: 0px;
+  padding: 0px;
+  vertical-align: center;
+  
+}
+
+a:hover{
+  text-decoration: none;
+  color: chocolate;  
+}
+
+.box {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.padding{
+  padding: 10px 15% ;
+  max-width: 1016px;
+}
+
+
+button{
+  background-color: transparent;
+  border: none;
+}
+button:focus {
+  border: none;
+  outline: none;
+}
+
+.disabled {
+  background-color: dimgray !important;
+} 
+
+@media only screen and (max-width: 600px) {
+  .padding {
+    padding: 3px 15px;
+  }
+}
+
+  

@@ -1,0 +1,37 @@
+.questions-list{
+    border: none;
+}
+.question-box {
+    background-color : white;
+    padding: 10px 15px;
+    margin-top: 10px ;    
+    border-radius: 8px;
+    font-size: 19px;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    text-align: left;
+    width: 100%;
+}
+
+
+.question-date{
+    font-size: 10px;
+    color :#b2b2bb	;
+    font-weight: lighter;
+    vertical-align: top;
+    margin-left: 1px;
+
+}
+
+.question-answer{
+    font-weight: lighter;
+    font-family: 'Segoe UI';
+    font-size: 17px;    
+    margin: 10px ;
+}
+
+@media only screen and (max-width: 600px) {
+    .questions-list {
+      margin: 3px 10px;
+    }
+  }
