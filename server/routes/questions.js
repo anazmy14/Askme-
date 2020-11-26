@@ -39,13 +39,15 @@ router.get('/',auth, async (req,res) => {
         to : 1,
         date : 1,
         question : 1,
-        answer : 1  
+        answer : 1,
+        anonymous : 1  
        }).sort({date:-1});
       questions.forEach( q  =>  q.time = q.date.toDateString() );      
       res.send({questions})
     }catch(err){
       console.log(err);
-    }    
+    }  
+
 })
 
 router.get('/try' , async(req,res) => {
@@ -66,7 +68,6 @@ router.post('/', auth ,async (req , res) => {
     anonymous : req.body.anonymous,
     date : Date.now()
  }
- 
   try {
     await questionModel.create(question);
     res.status(200).send();
