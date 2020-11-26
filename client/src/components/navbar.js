@@ -54,10 +54,10 @@ function Navbar(){
        <div>           
            <nav className=" nav-box navbar navbar-light bg-light ml-auto fixed-top" >
                 <Link className= "nav-logo" to="/">ASKme</Link>
-                <Link className= "ml-auto nav-link" to='/' ><i class="fas fa-house-user"></i></Link>
-                <Link className= "nav-link" to = "/questions"  ><i class="fas fa-question-circle"></i></Link>       
-                <Link className= "nav-link" to = {"/profile/"+ username} ><i class="fas fa-user"></i></Link>    
-                <Link className= "nav-link" onClick ={handleClick} > <i class="fas fa-sign-out-alt"></i> </Link>
+                <Link className= "ml-auto nav-link" to='/' ><i className="fas fa-house-user"></i></Link>
+                <Link className= "nav-link" to = "/questions"  ><i className="fas fa-question-circle"></i></Link>       
+                <Link className= "nav-link" to = {"/profile/"+ username} ><i className="fas fa-user"></i></Link>    
+                <Link className= "nav-link" onClick ={handleClick} to="#" > <i className="fas fa-sign-out-alt"></i> </Link>
            </nav>           
        </div>
 

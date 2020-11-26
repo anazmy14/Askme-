@@ -26,7 +26,7 @@ function Inbox(){
         <div className = "inbox-box" >
             <Navbar/>
             <h3>  {questions.length} Questions! </h3>
-            { questions.map( (q) => <InboxQuestion question ={q} active = { activeQuestion ==  q._id }  setActive = {setActive} remove={removeQuestion}  />  )  }
+            { questions.map( (q) => <InboxQuestion key={q._id} question ={q} active = { activeQuestion ==  q._id }  setActive = {setActive} remove={removeQuestion}  />  )  }
         </div>
     )
 }

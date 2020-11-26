@@ -30,8 +30,8 @@ function Question (props){
             <div className = "user-box"> <User showDate = {1} username = {props.question.to} date = {props.question.time} /> </div>
             <p className = "question-answer"> {props.question.answer} </p>
             {isLike? 
-            <button className="question-like" onClick = {()=> unlike(props.question._id, setIsLike)} > <i class="fas fa-heart"></i> </button>
-            : <button className="question-like" onClick = {()=> like(props.question._id, setIsLike)} > <i class="far fa-heart"></i> </button>
+            <button className="question-like" onClick = {()=> unlike(props.question._id, setIsLike)} > <i className="fas fa-heart"></i> </button>
+            : <button className="question-like" onClick = {()=> like(props.question._id, setIsLike)} > <i className="far fa-heart"></i> </button>
             }
             <span className="question-likes-cnt" > {likes} </span>           
          </div>

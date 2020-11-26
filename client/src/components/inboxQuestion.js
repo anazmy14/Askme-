@@ -70,8 +70,8 @@ function InboxQuestion (props){
         {props.active?
         <>
          <form onSubmit = {handleSubmit} >
-         <textarea class="form-control inbox-form" rows = "4" onChange = {onChange} ></textarea>
-         <button type="submit" class="inbox-send disabled" disabled> <i class="fa fa-paper-plane" aria-hidden="true"></i> </button>
+         <textarea className="form-control inbox-form" rows = "4" onChange = {onChange} ></textarea>
+         <button type="submit" className="inbox-send disabled" disabled> <i class="fa fa-paper-plane" aria-hidden="true"></i> </button>
          
          </form>
         </>

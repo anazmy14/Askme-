@@ -105,18 +105,18 @@ function Profile(props){
            <div className = "col-xs-6 profile-name-box">
                <p> @{user} </p>
                {isFollow?
-               <button type="button" class="profile-follow profile-unfollow" onClick = {()=> unfollow(user , toggleFollow)} > unfollow <i class="fas fa-user-slash"></i></button>  
-               : <button type="button" class="profile-follow" onClick = {()=> follow(user , toggleFollow)} > follow <i class="fas fa-user-plus"></i></button>
+               <button type="button" className="profile-follow profile-unfollow" onClick = {()=> unfollow(user , toggleFollow)} > unfollow <i className="fas fa-user-slash"></i></button>  
+               : <button type="button" className="profile-follow" onClick = {()=> follow(user , toggleFollow)} > follow <i className="fas fa-user-plus"></i></button>
                } 
            </div>
            
            </div>
          </div>
 
-           <div class="form-group  profile-form-box">
+           <div className="form-group  profile-form-box">
             <form onSubmit = {handleSubmit}>    
-             <textarea class="form-control profile-form" rows = "4" onChange = {onChange} value = {question} ></textarea>
-             <button type="submit" className="profile-ask"  > ASK  <i class="fa fa-paper-plane" aria-hidden="true"></i>
+             <textarea className="form-control profile-form" rows = "4" onChange = {onChange} value = {question} ></textarea>
+             <button type="submit" className="profile-ask"  > ASK  <i className="fa fa-paper-plane" aria-hidden="true"></i>
             </button>
             <span className = "profile-switch">
                <SwitchBtn  setAnonymous = {setAnonymous}/>
