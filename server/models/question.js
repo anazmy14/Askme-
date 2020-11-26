@@ -18,6 +18,10 @@ const questionSchema = new mongoose.Schema({
     answer : {
         type : String
     },
+    likes : {
+        type : Array,
+        default : []        
+    },
     date : {
         type : Date 
     },

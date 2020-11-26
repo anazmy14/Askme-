@@ -13,13 +13,12 @@ const setQueries = async (req) => {
     query.answer = req.query.answer == "0"? { $eq : null} : {$ne : null}  ; 
     if( req.query.answer == '0') {
         query.to = req.user;
-        return ;
+        return ; 
     }
     if(req.query.to != "all") {
       query.to = req.query.to;
       return ;
-    }
-    
+    }       
 
     let following = await followModel.find( {from : req.user});
     following = following.map(x => x.to);
@@ -30,22 +29,36 @@ const setQueries = async (req) => {
 router.get('/',auth, async (req,res) => {
     try {
       await setQueries(req);
-      const questions = await questionModel.find({
+      const questions = await questionModel.aggregate().match({
         to : query.to,
-        answer : query.answer         
-      }).sort({date:-1});
-      
-      questions.forEach(q => q.time = q.date.toDateString() )  ;
-      console.log(questions);
+        answer : query.answer
+      }).project( { 
+        likesCount : { $size: "$likes"}, 
+        isLike : { $in : [ req.user , "$likes" ] }, 
+        from : 1,
+        to : 1,
+        date : 1,
+        question : 1,
+        answer : 1  
+       }).sort({date:-1});
+      questions.forEach( q  =>  q.time = q.date.toDateString() );      
       res.send({questions})
     }catch(err){
       console.log(err);
     }    
+})
 
+router.get('/try' , async(req,res) => {
+   const results = await questionModel.aggregate().project( { 
+     likesCount : { $size: "$likes"}, 
+     isLike : { $in : [ req.user , "$likes" ] }
+    });
+   res.send(results);
 })
 
 router.post('/', auth ,async (req , res) => {
   console.log(req.body);
+  
   const question = {
     from : req.user, 
     to : req.body.username,
@@ -74,12 +87,10 @@ router.delete('/:id', auth, async(req,res) =>{
 });
 
 router.put('/:id', auth, async(req,res) =>{
-  console.log(req.body);
+ 
+  req.body.date =  Date.now();
   try {
-     await questionModel.findByIdAndUpdate( req.params.id , {
-       answer : req.body.answer,
-       date : Date.now()
-    });
+     await questionModel.findByIdAndUpdate( req.params.id , req.body);
      console.log("updated");
   }catch(err){
     console.log(err);

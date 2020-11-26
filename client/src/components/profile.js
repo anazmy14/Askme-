@@ -79,7 +79,6 @@ function Profile(props){
     
 
     useEffect( ()=> question.length? enableBtn("profile-ask") : disableBtn("profile-ask")  , [question])
-    useEffect( ()=> console.log(anonymous) , [anonymous] )
     
     if (redirect) return <Redirect to ="/"/> ;  
 

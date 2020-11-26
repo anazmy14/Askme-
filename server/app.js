@@ -37,10 +37,12 @@ const authRouter = require('./routes/auth');
 const profilesRouter = require('./routes/profiles');
 const followRouter = require('./routes/follow');
 const questionsRouter = require('./routes/questions');
+const likeRouter = require('./routes/like');
  
 app.use('/profiles' , profilesRouter);
 app.use('/follow', followRouter );
 app.use('/questions', questionsRouter);
+app.use('/like', likeRouter);
 app.use('/' , authRouter);
 
 
