@@ -11,14 +11,22 @@
 
 .inbox-question-box {
   width : 400px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   border-bottom: solid 1px darkgray;
   margin-bottom: 13px ;
   padding-bottom: 13px;
   max-width: 100%;
 }
+
+.inbox-line{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inbox-full{
+    word-wrap: break-word;
+}
+
 
 .inbox-answer {
     font-weight: 600;

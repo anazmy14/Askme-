@@ -31,7 +31,7 @@ async function deleteQuestion(id, next){
 
 function InboxQuestion (props){
     const { value : answer , setValue: setAnswer, onChange, reset  } = useInput("");
-    
+    const className = props.active? "inbox-full" : "inbox-line";
 
     useEffect ( ()=>{
         if(answer.length) enableBtn("inbox-send");
@@ -54,7 +54,7 @@ function InboxQuestion (props){
 
     return (
         
-    <div className = "inbox-question-box">
+    <div className = {"inbox-question-box " + className } >
         {props.question.question}
         <p>             
         {!props.question.anonymous?  
