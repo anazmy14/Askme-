@@ -35,8 +35,7 @@ function pageType (isRegister){
     }
 } 
 
-
-
+    
 function AuthForm (props){
     const { value : username , setValue : setUsername, onChange : onUsernameChange } = useInput("") ;
     const { value : password , setValue: setPassword, onChange : onPasswordChange } = useInput(""); 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import User from './user';
 import '../styles/profile.css'
 import QuestionList from './questionsList';
@@ -9,6 +9,8 @@ import Navbar from './navbar';
 import {disableBtn, enableBtn} from '../utils/toggleBtn';
 import user_img from '../userImg.jpg';
 import SwitchBtn from './switchBtn' 
+import {UserContext} from '../userContext' 
+
 
 
 const  baseUrl = 'https://ask-me-server.herokuapp.com/'
@@ -26,13 +28,12 @@ function unfollow(username, next){
 }
 
 
-async function fetchProfile(username, setUser, setIsFollow ){
+async function fetchProfile(username, setIsFollow ){
     const url = baseUrl + "profiles/" + username;
     console.log(url);
     try{
         const res = await axios.get(url); 
         console.log(res);
-        setUser(res.data.user);    
         setIsFollow(res.data.isFollow);  
     }catch(err){
         console.log(err);
@@ -60,21 +61,21 @@ async function ask( username, question, anonymous){
 
 function Profile(props){
     const [redirect, setRedirect] = useState(0);
-    const [user, setUser] = useState("");
     const {value : question , setValue: setQuestion, onChange : onChange, reset  } = useInput(""); 
     const [profileQuestions , setProfileQuestions] = useState([]) ; 
     const [isFollow , setIsFollow] = useState(0);
     const [anonymous, setAnonymous] = useState(false);
-   
+    const user = props.match.params.username ;    
+    const currentUser = useContext(UserContext)[0]; 
     useEffect( async () => {
         try{
-           await fetchProfile(props.match.params.username, setUser, setIsFollow ) ; 
-           await fetchProfileQuestions(props.match.params.username , setProfileQuestions);
+           await fetchProfile(user, setIsFollow ) ; 
+           await fetchProfileQuestions(user , setProfileQuestions);
         }catch{  
             setRedirect(1);
         }
            
-    } , [props.match.params.username]);
+    } , [user]);
 
     
 
@@ -104,10 +105,14 @@ function Profile(props){
            </div>
            <div className = "col-xs-6 profile-name-box">
                <p> @{user} </p>
+               { user != currentUser ? 
+               <>
                {isFollow?
                <button type="button" className="profile-follow profile-unfollow" onClick = {()=> unfollow(user , toggleFollow)} > unfollow <i className="fas fa-user-slash"></i></button>  
                : <button type="button" className="profile-follow" onClick = {()=> follow(user , toggleFollow)} > follow <i className="fas fa-user-plus"></i></button>
                } 
+               </> 
+               :null }                     
            </div>
            
            </div>
@@ -130,14 +135,7 @@ function Profile(props){
           </div> 
 
            <QuestionList questions = {profileQuestions}/>
-        
-
-
-
-
-
-
-           
+              
         </>
     )
 
