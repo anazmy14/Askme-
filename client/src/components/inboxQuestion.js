@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import axios from 'axios';
 import useInput from '../hooks/input-hook';
 import { disableBtn, enableBtn } from '../utils/toggleBtn';
+import {Link} from 'react-router-dom';
 
 const  baseUrl = 'https://ask-me-server.herokuapp.com/questions/' 
 
@@ -55,9 +56,17 @@ function InboxQuestion (props){
         
     <div className = "inbox-question-box">
         {props.question.question}
-        <br></br>
-        <button type = "button" className="inbox-answer" onClick = {handleToggle} href="#"> Answer </button>
+        <p>             
+        {!props.question.anonymous?  
+            <Link className="inbox-question-from" to = {"/profile/"+props.question.from}> from {props.question.from} </Link>
+        : null}    
+        </p>             
+
+
+        <button type = "button" className="inbox-answer" onClick = {handleToggle} href="#"> Answer </button>       
         <button className= "inbox-delete" onClick = {() => deleteQuestion(props.question._id, props.remove(props.question._id) )}>Delete</button>
+        
+        
         {props.active?
         <>
          <form onSubmit = {handleSubmit} >
@@ -67,6 +76,7 @@ function InboxQuestion (props){
          </form>
         </>
          : null} 
+
 
     </div>
    )

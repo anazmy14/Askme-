@@ -11,7 +11,7 @@
 
 .inbox-question-box {
   width : 400px;
-  overflow:hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   border-bottom: solid 1px darkgray;
@@ -51,6 +51,10 @@
 .disabled.inbox-send{
     background-color: transparent !important;
     color: gray;
+}
+
+.inbox-question-from{
+    font-weight: 600;
 }
 
 
